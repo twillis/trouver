@@ -3,6 +3,8 @@ from .scanner import scan_path
 from .config import get_config, save_config
 from elasticsearch_dsl import connections
 import os
+from .web import make_app
+from waitress import serve
 
 connections.configure(
     default={
@@ -32,8 +34,11 @@ def scanner_main():
 
 
 def web_main():
-    pass
-
+    OPTIONS = "p:i:"
+    args = dict(get_args(OPTIONS, []))
+    port = args.get('-p', 6543)
+    interface = args.get('-i', 'localhost')
+    serve(make_app({}), host=interface, port=port)
 
 def get_args(options, long_options):
     argv = sys.argv[1:]

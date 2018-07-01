@@ -3,7 +3,9 @@ import setuptools
 install_requires = [
     'pyramid',
     'elasticsearch-dsl>=6.0.0',
-    'tika'
+    'tika',
+    'pyramid_jinja2',
+    'waitress'
 ]
 
 setup_requires = [
