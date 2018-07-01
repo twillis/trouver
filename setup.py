@@ -35,7 +35,7 @@ setuptools.setup(
     version="0.1.0",
     url="",
     author="Tom Willis",
-    author_email="Tom Willis",
+    author_email="tom.willis@gmail.com",
     description="minmum full text search of files",
     long_description=open('README.rst').read(),
     packages=setuptools.find_packages(),
