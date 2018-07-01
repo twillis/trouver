@@ -1,7 +1,50 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trouver</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/Article-List.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
   </head>
+
   <body>
-    <h1>Find shit in your books</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <form action="/" method="GET">
+            <div class="input-group">
+              <input class="form-control" type="text" id="q" name="q" value="{{q}}">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Search!</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="article-list">
+      {% if results | length %}
+      <div class="container">
+        <div class="intro">
+          <h2 class="text-center">Results</h2>
+        </div>
+        <div class="row search-results">
+          {% for result in results %}
+          <div class="col-sm-6 col-md-4 item search-result">
+            {# <a href="#"><img class="img-fluid" src="assets/img/desk.jpg"></a> #}
+            <h3 class="title">{{result.title}}</h3>
+            <p class="description">{{result.content[0:1000]}}</p>
+            <a href="/get?id={{result.meta.id}}" class="action" target="_blank"><i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
