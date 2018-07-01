@@ -24,9 +24,9 @@ exclude_package_data = {
 
 entry_points = {
     'console_scripts': [
-        'trouver = trouver.command.main',
-        'trouver-web = trouver.command.web_main',
-        'trouver-scan = trouver.command.scanner_main'
+        'trouver = trouver.command:main',
+        'trouver-web = trouver.command:web_main',
+        'trouver-scan = trouver.command:scanner_main'
     ]
 }
 
