@@ -6,8 +6,9 @@ from pyramid.response import FileResponse
 def search(request):
     q = request.params.get('q', None)
     s = Document.search()
-    s = s.query('match', content=q)
-    return {'results': s.execute(), 'q': q}
+    if q:
+        s = s.query('match', content=q)
+    return {'results': s.execute(), 'q': q or ''}
 
 
 @view_config(route_name="get", request_method="GET")
