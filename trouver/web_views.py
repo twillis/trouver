@@ -7,7 +7,7 @@ def search(request):
     q = request.params.get('q', None)
     s = Document.search()
     if q:
-        s = s.query('match', content=q)
+        s = s.query('multi_match', query=q, fields=['title', 'content'])
     return {'results': s.execute(), 'q': q or ''}
 
 
