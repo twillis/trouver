@@ -36,7 +36,11 @@
           <div class="col-sm-6 col-md-4 item search-result">
             {# <a href="#"><img class="img-fluid" src="assets/img/desk.jpg"></a> #}
             <h3 class="title">{{result.title}}</h3>
-            <p class="description">{{result.content[0:1000]}}</p>
+            {% for fragment in result.meta.highlight.content %}
+              <div class="fragment">
+                {{ fragment | safe }}
+              </div>
+            {% endfor %}
             <a href="/get?id={{result.meta.id}}" class="action" target="_blank"><i class="fa fa-arrow-circle-right"></i></a>
           </div>
           {% endfor %}

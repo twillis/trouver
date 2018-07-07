@@ -7,7 +7,7 @@ class Document(ESDoc):
     class Meta:
         index = 'trouver-documents'
     content = ESText(analyzer='snowball')
-    title = ESText()
+    title = ESText(fielddata=True)
     content_type = ESText()
     file_path = ESText()
     status = ESText()

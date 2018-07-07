@@ -8,6 +8,8 @@ def search(request):
     s = Document.search()
     if q:
         s = s.query('multi_match', query=q, fields=['title', 'content'])
+        s = s.highlight('content', fragment_size=200)
+
     return {'results': s.execute(), 'q': q or ''}
 
 

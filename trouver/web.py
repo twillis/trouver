@@ -11,5 +11,5 @@ def include_me(config):
     config.include('pyramid_jinja2')
     config.add_route('search', '/')
     config.add_route('get', '/get')
-    config.add_static_view('assets', '.assets')
+    config.add_static_view('assets', 'assets')
     config.scan('.web_views')
